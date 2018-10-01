@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Kotlin, better java</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/league.css">
@@ -140,24 +140,8 @@
 								return result;
 							}
 							```
-						</textarea>
-					</section>
-					<section data-markdown>
-						<textarea data-template>
-							*Java*
 
-							```Java
-							public List<String> doStuff(List<String> list) {
-								ArrayList<> result = new ArrayList<>();
-								for (str : list) {
-									if (str.startsWith("a")) {
-										result.add(str.toUpperCase());
-									}
-								return result;
-							}
-							```
-
-							*Kotlin*
+							*Kotlin* <!-- .element: class="fragment" data-fragment-index="1"-->
 
 							```Kotlin
 							fun doStuff(list : List<String) : List<String> {
@@ -165,36 +149,13 @@
 											.map( {str → str.toUpperCase()} )
 							}
 							```
-						</textarea>
-					</section>
-					<section data-markdown>
-						<textarea data-template>
-							*Java*
-
-							```Java
-							public List<String> doStuff(List<String> list) {
-								ArrayList<> result = new ArrayList<>();
-								for (str : list) {
-									if (str.startsWith("a")) {
-										result.add(str.toUpperCase());
-									}
-								return result;
-							}
-							```
-
-							*Kotlin*
-
-							```Kotlin
-							fun doStuff(list : List<String) : List<String> {
-								return list.filter( {str → str.startsWith("a") }
-											.map( {str → str.toUpperCase()} )
-							}
-							```
+							<!-- .element: class="fragment" data-fragment-index="1"-->
 
 							```Kotlin
 							fun doStuff(list : List<String>) = 
 								list.filter{it.startsWith("a")}.map{it.toUpperCase()}
-							```	
+							```
+							<!-- .element: class="fragment" data-fragment-index="2"-->
 						</textarea>
 					</section>
 				</section>
