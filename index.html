@@ -1,0 +1,402 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					<textarea data-template>
+						<img src="./kotlin_android_logo.png" height="150">
+						### Kotlin, *better Java*
+						Alan Herrera
+
+						<img src="Logo_iviflo_couleur.png" height="100">	
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+					### Sommaire
+					* Introduction :
+						* Quels problèmes avec Java ?
+						* Kotlin, c’est quoi ?
+					* 5 killer features
+					* Parfait pour Android
+					* Kotlin avec Android Studio
+					* Résumé
+					* Documentation et bibliographie
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Introduction
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Quels problèmes avec Java ?
+						* Java manque de fonctionnalités modernes :
+							* properties, programmation fonctionnelle poussée
+						* Null safety
+							* NullPointerException
+						* Langage verbeux
+						* Fonctionnalités spécifiques au JDK et à l’API Android
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Kotlin, c'est quoi ?
+						* Nommé d’après une île de St-Petersburg
+						* Un langage de programmation objet et fonctionnel :
+							* Basé sur la JVM
+							* S’inspire du livre *Effective Java* de Joshua Bloch 
+							* Plus compacte et moderne (« better java »)
+							* Open source
+						* Créé par JetBrains
+							* Intégré dans Android Studio et JetBrains Intellij
+							* Utilisé en interne par JetBrains
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Kotlin, c'est quoi ?
+						* Un langage pour les gouverner tous :
+							* Applications côté serveur (JVM)
+							* Applications Android (langage officielle Google I/O 2017)
+							* Applications côté client : Kotlin Javascript
+							* Applications embarquées/iOS : Kotlin/Native
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Kotlin, c'est quoi ?
+						* La syntaxe en quelques mots :
+							* Le type suit le nom de la variable/fonction
+							* Une fonction commence par le mot-clé fun
+							* Le constructeur par défaut est dans la signature de classe
+							* Le point-virgule est optionnel
+							* Le mot clé new est optionnel pour instancier un objet
+
+						```Kotlin
+						class User(name: String, email : String) : Bar(name) {
+						override fun foo(): Goo {
+								return Goo()
+							}
+						}
+						```
+
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Prérequis
+						* Expression
+							* Quelque chose qui s'évalue -> valeur Typée
+							* ex: 2+2; f(x, y²); f(f(f(f(f(x)))))
+						* Instruction:
+							* action qui change l'état de la mémoire
+							* ex: x = 42; printf("Hello world !"); if (E) {I_1} else {I_2}
+						* Lambda : une expression lambda est une fonction anonyme
+							* { x: Int → x * x }
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### 5 killer features
+					</textarea>
+				</section>
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							### Killer feature 1 : Programmation fonctionnelle
+							*Java*
+
+							```Java
+							public List<String> doStuff(List<String> list) {
+								ArrayList<> result = new ArrayList<>();
+								for (str : list) {
+									if (str.startsWith("a")) {
+										result.add(str.toUpperCase());
+									}
+								return result;
+							}
+							```
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							*Java*
+
+							```Java
+							public List<String> doStuff(List<String> list) {
+								ArrayList<> result = new ArrayList<>();
+								for (str : list) {
+									if (str.startsWith("a")) {
+										result.add(str.toUpperCase());
+									}
+								return result;
+							}
+							```
+
+							*Kotlin*
+
+							```Kotlin
+							fun doStuff(list : List<String) : List<String> {
+								return list.filter( {str → str.startsWith("a") }
+											.map( {str → str.toUpperCase()} )
+							}
+							```
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							*Java*
+
+							```Java
+							public List<String> doStuff(List<String> list) {
+								ArrayList<> result = new ArrayList<>();
+								for (str : list) {
+									if (str.startsWith("a")) {
+										result.add(str.toUpperCase());
+									}
+								return result;
+							}
+							```
+
+							*Kotlin*
+
+							```Kotlin
+							fun doStuff(list : List<String) : List<String> {
+								return list.filter( {str → str.startsWith("a") }
+											.map( {str → str.toUpperCase()} )
+							}
+							```
+
+							```Kotlin
+							fun doStuff(list : List<String>) = 
+								list.filter{it.startsWith("a")}.map{it.toUpperCase()}
+							```	
+						</textarea>
+					</section>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Killer feature 2 : Null Safety et Safe Calls
+
+						```Kotlin
+						var bar: String = null //error! bar est non nullable
+						var bar: String? = null //variable nullable
+						fun foo(str: String?) {
+							if (str == null) return //checking -> variable non nullable
+							bar = str.replace("a", "b")
+							bar = str?.replace("a", "b") //safe call
+							bar = str?.replace("a", "b") ?: return //elvis operator
+							str?.let { bar = it.replace("a", "b") }
+							str2 = str!!.replace("a", "b") //ne faites pas ça
+						}
+						```
+					</textarea>
+				</section>
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							### Killer feature 3 : Data Class
+							*POJO coûteux !*
+
+							```Java
+							public class User {
+								private String name;
+								private int age;
+
+								public User(String name, int age) {
+									this.name = name;
+									this.age = age;
+								}
+
+								public String getName() { return name; }
+
+								public void setName(String name) { this.name = name; }
+
+								public int getAge() { return age; }
+
+								public void setAge(int age) { this.age = age; }
+
+								@Override
+								public boolean equals(Object o) {
+									if (this == o) return true;
+									if (o == null || getClass() != o.getClass()) return false;
+									User user = (User) o;
+									return age == user.age &&
+											Objects.equals(name, user.name);
+								}
+
+								@Override
+								public int hashCode() { return Objects.hash(name, age); }
+
+								@Override
+								public String toString(){
+								return "name=" + name + " age=" + age
+							}
+							}
+							```
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							
+							```Kotlin
+							data class User(val name: String, var age: Int)
+							```
+
+							
+							```Kotlin
+							val alice = User("Alice", 42)
+							alice.age = 43
+							println("${alice.name} is ${alice.age} years old")
+							//Alice is 43 years old
+							```
+
+							* constructeur et properties par défaut
+							* equals()/hashCode()
+							* toString() sous la forme "User(name=Alice, age=42)"
+							* copy()
+						</textarea>
+					</section>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Killer feature 4 : Extensions
+						* Extension function
+
+						```Kotlin
+						fun String.encodeSpaces(): String  = this.replace(" ", "_")
+						println("Open Space".encodeSpaces()) //Open_Space
+						```
+
+						* Property extension
+						
+						```Kotlin
+						val Int.bd: BigDecimal
+							get() = BigDecimal(this)
+							val myBigDecimal = 42.bd //type BigDecimal
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Killer feature 5 : named and default parameter
+						
+						```Kotlin
+							data class User(val firstName: String = "",
+											val name : String,
+											val age: Int = 0,
+											val email: String = "default@iviflo.com",
+											val height: Int,
+											val weight: Int,			
+											val shoeSize: Int?)
+
+							val Bob = User(name = "Bob", height = 180, weight = 70, 
+								shoeSize = 42)
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Parfait pour Android
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Parfait pour Android
+						* Android est coincé avec Java 7~8 (min API 24)
+						* Interopérabilité avec Java
+						* Migration progressive
+						* Kotlin std-lib compacte
+						* Faire plus avec moins de code
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Android Extensions
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Performances
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Kotlin avec Android Studio
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Les outils intégrés
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Migrer vers Kotlin
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Résumé
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Bibliographie
+						* Talks 
+							* Kotlin, the pragmatic langage for Android : [mike.gouline.net/talks](https://mike.gouline.net/talks)
+							* Google IO 2017 : [youtu.be/X1RVYt2QKQE](https://youtu.be/X1RVYt2QKQE)
+							* Google IO 2018 : [youtu.be/6P20npkvcb8](https://youtu.be/6P20npkvcb8)
+							* Documentation : [kotlinlang.org](https://kotlinlang.org/)
+						* Article
+							* 5 exciting features for Android Devs : [android.jlelse.eu/switching-from-java-to-kotlin-5-exciting-features-for-android-developers-49ce712a546](https://android.jlelse.eu/switching-from-java-to-kotlin-5-exciting-features-for-android-developers-49ce712a546)
+					</textarea>
+				</section>
+				<section>
+					<h3>Merci pour votre écoute !</h3>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
