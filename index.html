@@ -36,9 +36,7 @@
 				<section data-markdown>
 					<textarea data-template>
 					### Sommaire
-					* Introduction :
-						* Quels problèmes avec Java ?
-						* Kotlin, c’est quoi ?
+					* Introduction : Contexte, présentation, prérequis
 					* 5 killer features
 					* Parfait pour Android
 					* Kotlin avec Android Studio
@@ -146,14 +144,14 @@
 							```Kotlin
 							fun doStuff(list : List<String) : List<String> {
 								return list.filter( {str → str.startsWith("a") }
-											.map( {str → str.toUpperCase()} )
+										   .map( {str → str.toUpperCase()} )
 							}
 							```
 							<!-- .element: class="fragment" data-fragment-index="1"-->
 
 							```Kotlin
 							fun doStuff(list : List<String>) = 
-								list.filter{it.startsWith("a")}.map{it.toUpperCase()}
+								list.filter{ it.startsWith("a") }.map{ it.toUpperCase() }
 							```
 							<!-- .element: class="fragment" data-fragment-index="2"-->
 						</textarea>
@@ -164,15 +162,15 @@
 						### Killer feature 2 : Null Safety et Safe Calls
 
 						```Kotlin
-						var bar: String = null //error! bar est non nullable
+						var bar: String = null //error: bar est non nullable
 						var bar: String? = null //variable nullable
 						fun foo(str: String?) {
-							if (str == null) return //checking -> variable non nullable
-							bar = str.replace("a", "b")
+							if (str == null) return
+							bar = str.replace("a", "b") //check -> variable non nullable
 							bar = str?.replace("a", "b") //safe call
 							bar = str?.replace("a", "b") ?: return //elvis operator
-							str?.let { bar = it.replace("a", "b") }
-							str2 = str!!.replace("a", "b") //ne faites pas ça
+							str?.let { bar = it.replace("a", "b") } //let keyword
+							str2 = str!!.replace("a", "b") //ne faites pas ça !
 						}
 						```
 					</textarea>
@@ -215,7 +213,7 @@
 
 								@Override
 								public String toString(){
-								return "name=" + name + " age=" + age
+								return "name=" + name + " age=" + age;
 							}
 							}
 							```
@@ -225,7 +223,7 @@
 						<textarea data-template>
 							
 							```Kotlin
-							data class User(val name: String, var age: Int)
+							data class User(var name: String, var age: Int)
 							```
 
 							
@@ -235,11 +233,12 @@
 							println("${alice.name} is ${alice.age} years old")
 							//Alice is 43 years old
 							```
+							<!-- .element: class="fragment" data-fragment-index="1"-->
 
-							* constructeur et properties par défaut
-							* equals()/hashCode()
-							* toString() sous la forme "User(name=Alice, age=42)"
-							* copy()
+							* constructeur et properties par défaut <!-- .element: class="fragment" data-fragment-index="1"-->
+							* equals()/hashCode() <!-- .element: class="fragment" data-fragment-index="1"-->
+							* toString() sous la forme "User(name=Alice, age=42)" <!-- .element: class="fragment" data-fragment-index="1"-->
+							* copy() <!-- .element: class="fragment" data-fragment-index="1"-->
 						</textarea>
 					</section>
 				</section>
@@ -253,13 +252,14 @@
 						println("Open Space".encodeSpaces()) //Open_Space
 						```
 
-						* Property extension
+						* Property extension <!-- .element: class="fragment" data-fragment-index="1"-->
 						
 						```Kotlin
 						val Int.bd: BigDecimal
 							get() = BigDecimal(this)
-							val myBigDecimal = 42.bd //type BigDecimal
+						val myBigDecimal = 42.bd //type BigDecimal
 						```
+						<!-- .element: class="fragment" data-fragment-index="1"-->
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -278,6 +278,7 @@
 							val Bob = User(name = "Bob", height = 180, weight = 70, 
 								shoeSize = 42)
 						```
+
 					</textarea>
 				</section>
 				<section data-markdown>
