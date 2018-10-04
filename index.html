@@ -29,7 +29,7 @@
 						<img src="./kotlin_android_logo.png" height="180">
 						### Kotlin, *better Java*
 						Alan Herrera
-						
+
 						<img src="Logo_iviflo_couleur.png" height="90">	
 					</textarea>
 				</section>
@@ -96,8 +96,8 @@
 
 						```Kotlin
 						class User(name: String, email : String) : Person(name) {
-						override fun foo(): Goo {
-								return Goo()
+							override fun foo(): Bar {
+								return Bar()
 							}
 						}
 						```
@@ -109,7 +109,7 @@
 						### Notions
 						* Expression
 							* Quelque chose qui s'évalue -> valeur typée
-							* ex: 2+2; f(x, y²); f(f(f(f(f(x)))))
+							* ex: 2 + 2; f(x, y²); f(f(f(f(f(x)))))
 						* Instruction:
 							* action qui change l'état de la mémoire
 							* ex: x = 42; printf("Hello world !"); if (E) {I_1} else {I_2}
@@ -130,11 +130,12 @@
 
 							```Java
 							public List<String> doStuff(List<String> list) {
-								ArrayList<> result = new ArrayList<>();
+								ArrayList<String> result = new ArrayList<>();
 								for (str : list) {
 									if (str.startsWith("a")) {
 										result.add(str.toUpperCase());
 									}
+								}
 								return result;
 							}
 							```
@@ -142,16 +143,16 @@
 							*Kotlin* <!-- .element: class="fragment" data-fragment-index="1"-->
 
 							```Kotlin
-							fun doStuff(list : List<String) : List<String> {
+							fun doStuff(list : List<String>) : List<String> {
 								return list.filter( {str → str.startsWith("a") }
-										   .map( {str → str.toUpperCase()} )
+										    .map( {str → str.toUpperCase() } )
 							}
 							```
 							<!-- .element: class="fragment" data-fragment-index="1"-->
 
 							```Kotlin
 							fun doStuff(list : List<String>) = 
-								list.filter{ it.startsWith("a") }.map{ it.toUpperCase() }
+								list.filter { it.startsWith("a") }.map { it.toUpperCase() }
 							```
 							<!-- .element: class="fragment" data-fragment-index="2"-->
 						</textarea>
@@ -224,7 +225,7 @@
 						<textarea data-template>
 							
 							```Kotlin
-							data class User(var name: String, var age: Int)
+							data class User(val name: String, var age: Int)
 							```
 
 							
@@ -270,8 +271,8 @@
 						```Kotlin
 							data class User(val firstName: String = "",
 											val name : String,
-											val age: Int = 0,
-											val email: String = "default@iviflo.com",
+											val age: Int = 42,
+											val email: String = "default@company.com",
 											val height: Int,
 											val weight: Int,			
 											val shoeSize: Int?)
