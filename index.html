@@ -26,17 +26,17 @@
 			<div class="slides">
 				<section data-markdown>
 					<textarea data-template>
-						<img src="./kotlin_android_logo.png" height="150">
+						<img src="./kotlin_android_logo.png" height="180">
 						### Kotlin, *better Java*
 						Alan Herrera
-
-						<img src="Logo_iviflo_couleur.png" height="100">	
+						
+						<img src="Logo_iviflo_couleur.png" height="90">	
 					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
 					### Sommaire
-					* Introduction : Contexte, présentation, prérequis
+					* Introduction : Contexte, présentation, notions
 					* 5 killer features
 					* Parfait pour Android
 					* Kotlin avec Android Studio
@@ -66,7 +66,7 @@
 						* Nommé d’après une île de St-Petersburg
 						* Un langage de programmation objet et fonctionnel :
 							* Basé sur la JVM
-							* S’inspire du livre *Effective Java* de Joshua Bloch 
+							* Inspiré du livre *Effective Java* de Joshua Bloch 
 							* Plus compacte et moderne (« better java »)
 							* Open source
 						* Créé par JetBrains
@@ -78,10 +78,10 @@
 					<textarea data-template>
 						### Kotlin, c'est quoi ?
 						* Un langage pour les gouverner tous :
-							* Applications côté serveur (JVM)
-							* Applications Android (langage officielle Google I/O 2017)
-							* Applications côté client : Kotlin Javascript
-							* Applications embarquées/iOS : Kotlin/Native
+							* Côté serveur (JVM)
+							* Android (langage officielle Google I/O 2017)
+							* Web : Kotlin Javascript
+							* Embarquée/iOS : Kotlin/Native
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -89,13 +89,13 @@
 						### Kotlin, c'est quoi ?
 						* La syntaxe en quelques mots :
 							* Le type suit le nom de la variable/fonction
-							* Une fonction commence par le mot-clé fun
-							* Le constructeur par défaut est dans la signature de classe
+							* Une fonction commence par **fun**
+							* Signature de classe -> constructeur par défaut
 							* Le point-virgule est optionnel
-							* Le mot clé new est optionnel pour instancier un objet
+							* Le mot clé **new** est optionnel
 
 						```Kotlin
-						class User(name: String, email : String) : Bar(name) {
+						class User(name: String, email : String) : Person(name) {
 						override fun foo(): Goo {
 								return Goo()
 							}
@@ -106,9 +106,9 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						### Prérequis
+						### Notions
 						* Expression
-							* Quelque chose qui s'évalue -> valeur Typée
+							* Quelque chose qui s'évalue -> valeur typée
 							* ex: 2+2; f(x, y²); f(f(f(f(f(x)))))
 						* Instruction:
 							* action qui change l'état de la mémoire
@@ -166,11 +166,11 @@
 						var bar: String? = null //variable nullable
 						fun foo(str: String?) {
 							if (str == null) return
-							bar = str.replace("a", "b") //check -> variable non nullable
+							bar = str.replace("a", "b") //check -> str non nullable
 							bar = str?.replace("a", "b") //safe call
 							bar = str?.replace("a", "b") ?: return //elvis operator
 							str?.let { bar = it.replace("a", "b") } //let keyword
-							str2 = str!!.replace("a", "b") //ne faites pas ça !
+							str2 = str!!.replace("a", "b") //attention !
 						}
 						```
 					</textarea>
@@ -202,7 +202,8 @@
 								@Override
 								public boolean equals(Object o) {
 									if (this == o) return true;
-									if (o == null || getClass() != o.getClass()) return false;
+									if (o == null || getClass() != o.getClass()) 
+										return false;
 									User user = (User) o;
 									return age == user.age &&
 											Objects.equals(name, user.name);
@@ -212,9 +213,9 @@
 								public int hashCode() { return Objects.hash(name, age); }
 
 								@Override
-								public String toString(){
-								return "name=" + name + " age=" + age;
-							}
+								public String toString() {
+									return "name=" + name + " age=" + age;
+								}
 							}
 							```
 						</textarea>
@@ -237,7 +238,7 @@
 
 							* constructeur et properties par défaut <!-- .element: class="fragment" data-fragment-index="1"-->
 							* equals()/hashCode() <!-- .element: class="fragment" data-fragment-index="1"-->
-							* toString() sous la forme "User(name=Alice, age=42)" <!-- .element: class="fragment" data-fragment-index="1"-->
+							* toString() -> "User(name=Alice, age=42)" <!-- .element: class="fragment" data-fragment-index="1"-->
 							* copy() <!-- .element: class="fragment" data-fragment-index="1"-->
 						</textarea>
 					</section>
@@ -245,14 +246,14 @@
 				<section data-markdown>
 					<textarea data-template>
 						### Killer feature 4 : Extensions
-						* Extension function
+						*Extension function*
 
 						```Kotlin
 						fun String.encodeSpaces(): String  = this.replace(" ", "_")
 						println("Open Space".encodeSpaces()) //Open_Space
 						```
 
-						* Property extension <!-- .element: class="fragment" data-fragment-index="1"-->
+						*Property extension* <!-- .element: class="fragment" data-fragment-index="1"-->
 						
 						```Kotlin
 						val Int.bd: BigDecimal
@@ -290,10 +291,9 @@
 					<textarea data-template>
 						### Parfait pour Android
 						* Android est coincé avec Java 7~8 (min API 24)
-						* Interopérabilité avec Java
-						* Migration progressive
-						* Kotlin std-lib compacte
-						* Faire plus avec moins de code
+						* Interopérabilité avec Java -> compatibilité des bibliothèques
+						* Kotlin std-lib compact
+						* Soutenu par JetBrains et Google
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -324,6 +324,13 @@
 				<section data-markdown>
 					<textarea data-template>
 						### Résumé
+						* *Code once, run everywhere*
+						* concis, expressif, sûr -> relecture de code, bugs
+						* Actif et prêt pour la production
+						* Pas de surcoût de performance
+						* Migration progressive
+						* Adapté pour Android
+						* Apprécié et adopté
 					</textarea>
 				</section>
 				<section data-markdown>
