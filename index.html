@@ -81,7 +81,7 @@
 							* Côté serveur (JVM)
 							* Android (langage officielle Google I/O 2017)
 							* Web : Kotlin Javascript
-							* Embarquée/iOS : Kotlin/Native
+							* Embarquée/iOS : Kotlin/Native (*beta*)
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -92,13 +92,12 @@
 							* Une fonction commence par **fun**
 							* Signature de classe -> constructeur par défaut
 							* Le point-virgule est optionnel
-							* Le mot clé **new** est optionnel
+							* Pas de mot clé **new**
+							* val : immutable / var : mutable
 
 						```Kotlin
-						class User(name: String, email : String) : Person(name) {
-							override fun foo(): Bar {
-								return Bar()
-							}
+						class User(name: String, email : String): Person(name) {
+							override fun foo(): Bar = Bar()
 						}
 						```
 
@@ -131,7 +130,7 @@
 							```Java
 							public List<String> doStuff(List<String> list) {
 								ArrayList<String> result = new ArrayList<>();
-								for (str : list) {
+								for (str: list) {
 									if (str.startsWith("a")) {
 										result.add(str.toUpperCase());
 									}
@@ -143,15 +142,15 @@
 							*Kotlin* <!-- .element: class="fragment" data-fragment-index="1"-->
 
 							```Kotlin
-							fun doStuff(list : List<String>) : List<String> {
-								return list.filter( {str → str.startsWith("a") }
-										    .map( {str → str.toUpperCase() } )
+							fun doStuff(list: List<String>) : List<String> {
+								return list.filter( { str → str.startsWith("a") }
+										   .map( { str → str.toUpperCase() } )
 							}
 							```
 							<!-- .element: class="fragment" data-fragment-index="1"-->
 
 							```Kotlin
-							fun doStuff(list : List<String>) = 
+							fun doStuff(list: List<String>) = 
 								list.filter { it.startsWith("a") }.map { it.toUpperCase() }
 							```
 							<!-- .element: class="fragment" data-fragment-index="2"-->
@@ -171,7 +170,7 @@
 							bar = str?.replace("a", "b") //safe call
 							bar = str?.replace("a", "b") ?: return //elvis operator
 							str?.let { bar = it.replace("a", "b") } //let keyword
-							str2 = str!!.replace("a", "b") //attention !
+							bar = str!!.replace("a", "b") //attention !
 						}
 						```
 					</textarea>
@@ -247,7 +246,7 @@
 				<section data-markdown>
 					<textarea data-template>
 						### Killer feature 4 : Extensions
-						*Extension function*
+						*Function extension*
 
 						```Kotlin
 						fun String.encodeSpaces(): String  = this.replace(" ", "_")
@@ -270,7 +269,7 @@
 						
 						```Kotlin
 							data class User(val firstName: String = "",
-											val name : String,
+											val name: String,
 											val age: Int = 42,
 											val email: String = "default@company.com",
 											val height: Int,
@@ -300,11 +299,39 @@
 				<section data-markdown>
 					<textarea data-template>
 						### Android Extensions
+						* View binding comme Butter Knife
+						* Pas de variables d'instance requises
+
+						*build.gradle*
+						```Gradle
+						apply plugin: 'kotlin-android-extensions'
+						```
+						
+						*MainActivity*
+
+						```Kotlin
+						import kotlinx.android.synthetic.main.activity_main.*
+						
+						override fun onCreate(savedInstanceState: Bundle?) {
+							super.onCreate(savedInstanceState)
+							setContentView(R.layout.activity_main)
+							btn_go.setText(R.string.go)
+							btn_go.setOnClickListener { txt_status.text = "Done" }
+						}
+						```
+
 					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
 						### Performances
+						* Compile vers du bytecode
+						* Pas d'impact sur les performances
+						* Du code Kotlin peut s'exécuter plus rapidement
+							* Fonctions **inline**
+							* Implémentations de la std-lib plus rapides que les implémentations DIY
+						* Built time sensiblement identique
+							* incremental builds
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -315,11 +342,17 @@
 				<section data-markdown>
 					<textarea data-template>
 						### Les outils intégrés
+						* TODO conversion Kotlin -> Java
+						* Kotlin Koans
 					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
 						### Migrer vers Kotlin
+						* TODO dépéndances
+						* Ecrire les tests en Kotlin
+						* Convertir les POJO
+						* Coder les nouveaux modules en Kotlin
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -328,7 +361,7 @@
 						* *Code once, run everywhere*
 						* concis, expressif, sûr -> relecture de code, bugs
 						* Actif et prêt pour la production
-						* Pas de surcoût de performance
+						* Pas de *overhead*
 						* Migration progressive
 						* Adapté pour Android
 						* Apprécié et adopté
@@ -338,10 +371,10 @@
 					<textarea data-template>
 						### Bibliographie
 						* Talks 
-							* Kotlin, the pragmatic langage for Android : [mike.gouline.net/talks](https://mike.gouline.net/talks)
+							* Kotlin, the pragmatic language for Android : [mike.gouline.net/talks](https://mike.gouline.net/talks)
 							* Google IO 2017 : [youtu.be/X1RVYt2QKQE](https://youtu.be/X1RVYt2QKQE)
 							* Google IO 2018 : [youtu.be/6P20npkvcb8](https://youtu.be/6P20npkvcb8)
-							* Documentation : [kotlinlang.org](https://kotlinlang.org/)
+						* Documentation : [kotlinlang.org](https://kotlinlang.org/)
 						* Article
 							* 5 exciting features for Android Devs : [android.jlelse.eu/switching-from-java-to-kotlin-5-exciting-features-for-android-developers-49ce712a546](https://android.jlelse.eu/switching-from-java-to-kotlin-5-exciting-features-for-android-developers-49ce712a546)
 					</textarea>
