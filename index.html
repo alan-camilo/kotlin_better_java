@@ -30,7 +30,7 @@
 						### Kotlin, *better Java*
 						Alan Herrera
 
-						<img src="./img/Logo_iviflo_couleur.png" height="90">	
+						<img src="./img/Logo_iviflo_couleur.png" height="90">
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -66,7 +66,7 @@
 						* Nommé d’après une île de St-Petersburg
 						* Un langage de programmation objet et fonctionnel :
 							* Basé sur la JVM
-							* Inspiré du livre *Effective Java* de Joshua Bloch 
+							* Inspiré du livre *Effective Java* de Joshua Bloch
 							* Plus compacte et moderne (« better java »)
 							* Open source
 						* Créé par JetBrains
@@ -150,7 +150,7 @@
 							<!-- .element: class="fragment" data-fragment-index="1"-->
 
 							```Kotlin
-							fun doStuff(list: List<String>) = 
+							fun doStuff(list: List<String>) =
 								list.filter { it.startsWith("a") }.map { it.toUpperCase() }
 							```
 							<!-- .element: class="fragment" data-fragment-index="2"-->
@@ -202,7 +202,7 @@
 								@Override
 								public boolean equals(Object o) {
 									if (this == o) return true;
-									if (o == null || getClass() != o.getClass()) 
+									if (o == null || getClass() != o.getClass())
 										return false;
 									User user = (User) o;
 									return age == user.age &&
@@ -222,12 +222,11 @@
 					</section>
 					<section data-markdown>
 						<textarea data-template>
-							
+
 							```Kotlin
 							data class User(val name: String, var age: Int)
 							```
 
-							
 							```Kotlin
 							val alice = User("Alice", 42)
 							alice.age = 43
@@ -254,7 +253,7 @@
 						```
 
 						*Property extension* <!-- .element: class="fragment" data-fragment-index="1"-->
-						
+
 						```Kotlin
 						val Int.bd: BigDecimal
 							get() = BigDecimal(this)
@@ -266,17 +265,17 @@
 				<section data-markdown>
 					<textarea data-template>
 						### Killer feature 5 : named and default parameter
-						
+
 						```Kotlin
 							data class User(val firstName: String = "",
 											val name: String,
 											val age: Int = 42,
 											val email: String = "default@company.com",
 											val height: Int,
-											val weight: Int,			
+											val weight: Int,
 											val shoeSize: Int?)
 
-							val Bob = User(name = "Bob", height = 180, weight = 70, 
+							val Bob = User(name = "Bob", height = 180, weight = 70,
 								shoeSize = 42)
 						```
 
@@ -306,12 +305,12 @@
 						```Gradle
 						apply plugin: 'kotlin-android-extensions'
 						```
-						
+
 						*MainActivity*
 
 						```Kotlin
 						import kotlinx.android.synthetic.main.activity_main.*
-						
+
 						override fun onCreate(savedInstanceState: Bundle?) {
 							super.onCreate(savedInstanceState)
 							setContentView(R.layout.activity_main)
@@ -347,40 +346,45 @@
 						* Installer le plugin EdutTools : cours Kotlin Koans
 					</textarea>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Migrer vers Kotlin						
-						*build.gradle*
-						
-						
-						```Gradle
-						buildscript {
-							...
-						    ext.kotlin_version = '1.2.71'
-					    }
-					    dependencies {
-							...
-							classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-						}
-						```
-						
-						*app/build.gradle*
-						
-						```Gradle
-						apply plugin: 'com.android.application'
-						apply plugin: 'kotlin-android'
-						apply plugin: 'kotlin-android-extensions'
-						dependencies {
-							...	
-							compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-						}
-						```
-						
-						*
-						* Ecrire les tests en Kotlin
-						* Convertir les POJO
-						* Coder les nouveaux modules en Kotlin
-					</textarea>
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							### Migrer vers Kotlin
+							*build.gradle*
+
+
+							```Gradle
+							buildscript {
+								...
+								ext.kotlin_version = '1.2.71'
+							}
+
+							dependencies {
+								...
+								classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+							}
+							```
+
+							*app/build.gradle*
+
+							```Gradle
+							apply plugin: 'com.android.application'
+							apply plugin: 'kotlin-android'
+							apply plugin: 'kotlin-android-extensions'
+							dependencies {
+								...
+								compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+							}
+							```
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							* Ecrire les tests en Kotlin
+							* Convertir les POJO
+							* Coder les nouveaux modules en Kotlin
+						</textarea>
+					</section>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
@@ -397,7 +401,7 @@
 				<section data-markdown>
 					<textarea data-template>
 						### Bibliographie
-						* Talks 
+						* Talks
 							* Kotlin, the pragmatic language for Android : [mike.gouline.net/talks](https://mike.gouline.net/talks)
 							* Google IO 2017 : [youtu.be/X1RVYt2QKQE](https://youtu.be/X1RVYt2QKQE)
 							* Google IO 2018 : [youtu.be/6P20npkvcb8](https://youtu.be/6P20npkvcb8)
