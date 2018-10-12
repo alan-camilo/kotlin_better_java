@@ -26,11 +26,11 @@
 			<div class="slides">
 				<section data-markdown>
 					<textarea data-template>
-						<img src="./kotlin_android_logo.png" height="180">
+						<img src="./img/kotlin_android_logo.png" height="180">
 						### Kotlin, *better Java*
 						Alan Herrera
 
-						<img src="Logo_iviflo_couleur.png" height="90">	
+						<img src="./img/Logo_iviflo_couleur.png" height="90">	
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -96,7 +96,7 @@
 							* val : immutable / var : mutable
 
 						```Kotlin
-						class User(name: String, email : String): Person(name) {
+						class User(val name: String, val email : String): Person(name) {
 							override fun foo(): Bar = Bar()
 						}
 						```
@@ -342,14 +342,41 @@
 				<section data-markdown>
 					<textarea data-template>
 						### Les outils intégrés
-						* TODO conversion Kotlin -> Java
-						* Kotlin Koans
+						<img src="./img/kotlin_converter.png">
+						* ou coller du code Java dans un fichier .kt
+						* Installer le plugin EdutTools : cours Kotlin Koans
 					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						### Migrer vers Kotlin
-						* TODO dépéndances
+						### Migrer vers Kotlin						
+						*build.gradle*
+						
+						
+						```Gradle
+						buildscript {
+							...
+						    ext.kotlin_version = '1.2.71'
+					    }
+					    dependencies {
+							...
+							classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+						}
+						```
+						
+						*app/build.gradle*
+						
+						```Gradle
+						apply plugin: 'com.android.application'
+						apply plugin: 'kotlin-android'
+						apply plugin: 'kotlin-android-extensions'
+						dependencies {
+							...	
+							compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+						}
+						```
+						
+						*
 						* Ecrire les tests en Kotlin
 						* Convertir les POJO
 						* Coder les nouveaux modules en Kotlin
