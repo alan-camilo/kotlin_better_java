@@ -70,8 +70,10 @@
 							* Plus compacte et moderne (« better java »)
 							* Open source
 						* Créé par JetBrains
-							* Intégré dans Android Studio et JetBrains Intellij
-							* Utilisé en interne par JetBrains
+						<aside class="notes">
+							- Intégré dans Android Studio et JetBrains Intellij<br>
+							- Utilisé en interne par JetBrains
+						</aside>
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -112,8 +114,14 @@
 						* Instruction:
 							* action qui change l'état de la mémoire
 							* ex: x = 42; printf("Hello world !"); if (E) {I_1} else {I_2}
-						* Lambda : une expression lambda est une fonction anonyme
+						* Lambda : fonction anonyme
 							* { x: Int → x * x }
+						* Higher-order function : retrourne une fonction/fonction en paramètre
+						<aside class="notes">
+							Avantages programmation fonctionnelle:
+							- concurrence<br>
+							- !effets de bords -> cohérence du comportement (==fonction maths)
+						</aside>
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -324,7 +332,20 @@
 				<section data-markdown>
 					<textarea data-template>
 						### Android KTX
-						*TODO*
+						Bibliothèque d'extensions de fonctions pour les API Android
+						```Kotlin
+						sharedPreferences.edit()
+										.putBoolean(key, value)
+										.apply()
+
+						//avec Android KTX				
+						sharedPreferences.edit {
+							putBoolean(key, value)
+						}
+						```
+
+						[https://www.raywenderlich.com/5576-android-ktx-tutorial-getting-started](https://www.raywenderlich.com/5576-android-ktx-tutorial-getting-started)
+
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -342,8 +363,9 @@
 				<section data-markdown>
 					<textarea data-template>
 						### Prêt pour la production
-						SonaQube plugin, JUnit, Mokk
-						*TODO*
+						Outils de tests : JUnit, MockK, Spek, KotlinTest
+
+						Analyse de code : SonarKotlin plugin
 					</textarea>
 				</section>
 				<section data-markdown>
@@ -354,55 +376,54 @@
 				<section data-markdown>
 					<textarea data-template>
 						### Les outils intégrés
-						<img src="./img/kotlin_converter.png">
+						<img width="800px" src="./img/kotlin_converter.png">
 						* ou coller du code Java dans un fichier .kt
 						* Installer le plugin EdutTools : cours Kotlin Koans
 					</textarea>
 				</section>
-				<section>
-					<section data-markdown>
-						<textarea data-template>
-							### Migrer vers Kotlin
-							*build.gradle*
+				<section data-markdown>
+					<textarea data-template>
+						### Migrer vers Kotlin
+						*build.gradle*
 
 
-							```Gradle
-							buildscript {
-								...
-								ext.kotlin_version = '1.2.71'
-							}
+						```Gradle
+						buildscript {
+							...
+							ext.kotlin_version = '1.3.0'
+						}
 
-							dependencies {
-								...
-								classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-							}
-							```
+						dependencies {
+							...
+							classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+						}
+						```
 
-							*app/build.gradle*
+						*app/build.gradle*
 
-							```Gradle
-							apply plugin: 'com.android.application'
-							apply plugin: 'kotlin-android'
-							dependencies {
-								...
-								compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-							}
-							```
-						</textarea>
-					</section>
-					<section data-markdown>
-						<textarea data-template>
-							* Ecrire les tests en Kotlin
-							* Convertir les POJO
-							* Coder les nouveaux modules en Kotlin
-						</textarea>
-					</section>
+						```Gradle
+						apply plugin: 'com.android.application'
+						apply plugin: 'kotlin-android'
+						dependencies {
+							...
+							compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+						}
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Migrer vers Kotlin
+						* Ecrire les tests en Kotlin
+						* Convertir les POJO
+						* Coder les nouveaux modules en Kotlin
+					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
 						### Résumé
 						* *Code once, run everywhere*
-						* concis, expressif, sûr -> relecture de code, bugs
+						* concis, expressif, sûr -> relecture de code, bugs, qualité
 						* Actif et prêt pour la production
 						* Pas de *overhead*
 						* Migration progressive
