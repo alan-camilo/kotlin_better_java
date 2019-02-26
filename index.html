@@ -131,9 +131,9 @@
 					<section data-markdown>
 						<textarea data-template>
 							### Killer feature 1 : Programmation fonctionnelle
-							*Java*
 
 							```Java
+							//Java
 							public List<String> doStuff(List<String> list) {
 								ArrayList<String> result = new ArrayList<>();
 								for (str: list) {
@@ -145,20 +145,19 @@
 							}
 							```
 
-							*Kotlin* <!-- .element: class="fragment" data-fragment-index="1"-->
+							<!-- .element: class="fragment" data-fragment-index="1"-->
 
 							```Kotlin
+							//Kotlin
 							fun doStuff(list: List<String>) : List<String> {
 								return list.filter( { str → str.startsWith("a") }
 										   .map( { str → str.toUpperCase() } )
 							}
-							```
-							<!-- .element: class="fragment" data-fragment-index="1"-->
-
-							```Kotlin
+							//encore plus concis
 							fun doStuff(list: List<String>) =
 								list.filter { it.startsWith("a") }.map { it.toUpperCase() }
 							```
+
 							<!-- .element: class="fragment" data-fragment-index="2"-->
 						</textarea>
 					</section>
@@ -230,6 +229,7 @@
 						<textarea data-template>
 
 							```Kotlin
+							//Un POJO en Kotlin
 							data class User(val name: String, var age: Int)
 							```
 
@@ -239,12 +239,11 @@
 							println("${alice.name} is ${alice.age} years old")
 							//Alice is 43 years old
 							```
-							<!-- .element: class="fragment" data-fragment-index="1"-->
 
-							* constructeur et properties par défaut <!-- .element: class="fragment" data-fragment-index="1"-->
-							* equals()/hashCode() <!-- .element: class="fragment" data-fragment-index="1"-->
-							* toString() -> "User(name=Alice, age=42)" <!-- .element: class="fragment" data-fragment-index="1"-->
-							* copy() <!-- .element: class="fragment" data-fragment-index="1"-->
+							* constructeur et properties par défaut
+							* equals()/hashCode()
+							* toString() -> "User(name=Alice, age=42)"
+							* copy()
 						</textarea>
 					</section>
 				</section>
@@ -455,11 +454,12 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
-			controls: true,
+				controls: true,
 				progress: true,
 				history: true,
 				center: true,
-				
+				controlsTutorial: true,
+
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
